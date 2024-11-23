@@ -81,8 +81,8 @@ hand_block = Entity( #"hand_block" 을 엔티티 함수로 저장
 
 min_height = -4 #월드 생성의 최소 높이를 -4로 지정
 
-for x in range(-10, 10): #변수 x의 반복문을 -10 부터 10까지 반복
-    for z in range(-10, 10): #변수 z의 반복문을 -10 부터 10까지 반복
+for x in range(-7, 7): #변수 x의 반복문을 -10 부터 10까지 반복
+    for z in range(-7, 7): #변수 z의 반복문을 -10 부터 10까지 반복
         height = noise([x * .02, z * .02]) #"noise"
         height = math.floor(height * 7.5) #"height" x 7.5를 내림하여 다시 "height"에 저장
 
@@ -115,9 +115,10 @@ def update(): #"update"함수 선언, 이함수는 게임 실행중 자동으로
     else: #아니라면
         hand_block.position = (.35, -.25, .5) #"hand_block"의 "position"을 0.35, -0.25, 0.5으로 지정
 
+    if player.y <= -30: #만약 플레이어의 y좌표가 -30보다 작다면
+        player.position = (0, 5, 0) #플레이어의 조표를 0, 5, 0 으로 설정
+
 sky = Sky(texture = "sky_sunset") 
 #텍스쳐가 "sky_sunset"인 "Sky"함수를 sky에 저장, 게임에서의 하늘 텍스쳐가 됨(이 함수의 "sky_sunset"텍스쳐는 ursina 엔진에 내장된 텍스쳐임)
 
 app.run() #게임 실핼
-
-
