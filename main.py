@@ -1,4 +1,5 @@
 from ursina import *
+from ursinanetworking import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from perlin_noise import PerlinNoise
 import random
