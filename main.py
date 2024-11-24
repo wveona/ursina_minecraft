@@ -1,6 +1,7 @@
 from ursina import *
 from ursinanetworking import *
 from ursina.prefabs.first_person_controller import FirstPersonController
+from ursina.shaders import basic_lighting_shader
 from perlin_noise import PerlinNoise
 import random
 
@@ -62,18 +63,21 @@ def input(key): #키 입력 함수를 선언
         quit() #게임 종료
 
 
+BLOCKS_PARENT = Entity()
 
-
-class Block(Entity): #"Entity"클래스를 상속받는 "Block" 클래스를 선언
+class Block(Button): #"Entity"클래스를 상속받는 "Block" 클래스를 선언
     def __init__(self, position, block_type): #매개변수가 "position", "block_type"인 생성자 선언
         super().__init__( #"Entity"의 메소드를 불러옴
+            parent = BLOCKS_PARENT,
             position = position,
             model = "assets/block.obj", #엔티티의 모델을 assets 폴더의 "block.obj" 로  저장
             scale = 1, #엔티티의 스케일을 1 로 저장
             origin_y = -.5, #엔티티의 초기 y좌표를 -0.5로 저장
             texture = block_texture.get(block_type), 
             #엔티티의 텍스쳐를 "block_texture" 딕셔너리의 "block_type"키의 밸류로 저장
-            collider = "box" #엔티티에 박스모양 충돌판정을 저장
+            collider = "box", #엔티티에 박스모양 충돌판정을 저장
+            shader = basic_lighting_shader,
+            color = color.white,
         )
         self.block_type = block_type
 
