@@ -7,7 +7,7 @@ import random
 noise = PerlinNoise(octaves = 3, seed = random.randint(1, 1000)) #랜덤 지형을 위한 노이즈 생성
 
 app = Ursina() #윈도우 생성
-
+window.borderless = False
 selected_block = "grass" #선택된 블럭을 "grass"로 지정
 
 player = FirstPersonController(
