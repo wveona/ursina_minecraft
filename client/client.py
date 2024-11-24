@@ -29,6 +29,12 @@ INDEX = 1
 SELECTED_BLOCK = "grass"
 SelfId = -1
 
+@Client.event
+def GetId(Id):
+    global SelfId
+    SelfId = Id
+    print(f"My ID is : {SelfId}")
+
 @Easy.event
 def onReplicatedVariableCreated(variable):
     global Client

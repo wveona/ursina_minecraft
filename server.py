@@ -26,6 +26,21 @@ def spawn_block(block_type, position, investigator = "client"):
     i += 1
 
 @Server.event
+def onClientConnected(Client):
+    Easy.create_replicated_variable(
+        f"player_{Client.id}",
+        { "type" : "player", "id" : Client.id, "position" : (0, 0, 0) }
+    )
+    print(f"{Client} connected !")
+    Client.send_message("GetId", Client.id)
+
+# A little goodbye
+@Server.event
+def onClientDisconnected(Client):
+    print(f"{Client} disconnected !")
+    Easy.remove_replicated_variable_by_name(f"player_{Client.id}")
+
+@Server.event
 def request_destroy_block(Client, Block_name):
     destroy_block(Block_name)
 
