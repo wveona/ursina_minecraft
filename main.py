@@ -37,7 +37,6 @@ def input(key): #키 입력 함수를 선언
     if key == "left mouse down" and mouse.hovered_entity: #만약 오른쪽 마우스를 클릭하고 마우스 위치에 엔티티가 있으면
         if not mouse.hovered_entity.block_type == "bedrock": #만약 마우스 위치에 있는 엔티티의 "block_type" 이 "bedrock"이 아니면
             destroy(mouse.hovered_entity) #마우스 위치에 있는 엔티티를 삭제
-
     
     if key == "1": #만약 1에서 5까지의 버튼중 하나를 누르면 "selected_block"을 변경
         selected_block = "grass"
@@ -50,10 +49,8 @@ def input(key): #키 입력 함수를 선언
     if key == "5":
         selected_block = "bedrock"
 
-    
     if key == "escape": #만약 esc를 누른다면
         quit() #게임 종료
-
 
 BLOCKS_PARENT = Entity()
 
