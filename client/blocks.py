@@ -25,4 +25,5 @@ class Bedrock(Block):
     def __init__(self, position = (0, 0, 0)):
         super().__init__(position)
         self.texture = "assets/stone07.png"
+        self.breakable = False
         

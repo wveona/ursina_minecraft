@@ -1,0 +1,1 @@
+sky = Sky(texture = "sky_sunset") 
