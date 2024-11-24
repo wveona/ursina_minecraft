@@ -4,6 +4,13 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 from perlin_noise import PerlinNoise
 import random
 
+Client = UrsinaNetworkingClient("localhost", 25565)
+
+
+    
+
+    
+
 noise = PerlinNoise(octaves = 3, seed = random.randint(1, 1000)) #랜덤 지형을 위한 노이즈 생성
 
 app = Ursina() #윈도우 생성
@@ -119,7 +126,16 @@ def update(): #"update"함수 선언, 이함수는 게임 실행중 자동으로
     if player.y <= -30: #만약 플레이어의 y좌표가 -30보다 작다면
         player.position = (0, 5, 0) #플레이어의 조표를 0, 5, 0 으로 설정
 
+    Client.process_net_events()
+
 sky = Sky(texture = "sky_sunset") 
 #텍스쳐가 "sky_sunset"인 "Sky"함수를 sky에 저장, 게임에서의 하늘 텍스쳐가 됨(이 함수의 "sky_sunset"텍스쳐는 ursina 엔진에 내장된 텍스쳐임)
 
+@Client.event
+def HelloFromServer():
+    block = Block((0, 5, 0), "bedrock")
+
+
 app.run() #게임 실핼
+
+
