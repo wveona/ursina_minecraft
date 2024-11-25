@@ -57,7 +57,7 @@ BLOCKS_PARENT = Entity()
 class Block(Button): #"Entity"클래스를 상속받는 "Block" 클래스를 선언
     def __init__(self, position, block_type): #매개변수가 "position", "block_type"인 생성자 선언
         super().__init__( #"Entity"의 메소드를 불러옴
-            parent = BLOCKS_PARENT,
+            parent = BLOCKS_PARENT, #부모 속성을 엔티티로 설정
             position = position,
             model = "assets/block.obj", #엔티티의 모델을 assets 폴더의 "block.obj" 로  저장
             scale = 1, #엔티티의 스케일을 1 로 저장
@@ -65,8 +65,8 @@ class Block(Button): #"Entity"클래스를 상속받는 "Block" 클래스를 선
             texture = block_texture.get(block_type), 
             #엔티티의 텍스쳐를 "block_texture" 딕셔너리의 "block_type"키의 밸류로 저장
             collider = "box", #엔티티에 박스모양 충돌판정을 저장
-            shader = basic_lighting_shader,
-            color = color.white,
+            shader = basic_lighting_shader, #셰이더 설정
+            color = color.white, #블럭 색 설정
         )
         self.block_type = block_type
 
