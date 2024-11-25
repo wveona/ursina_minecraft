@@ -34,7 +34,6 @@ def onClientConnected(Client):
     print(f"{Client} connected !")
     Client.send_message("GetId", Client.id)
 
-# A little goodbye
 @Server.event
 def onClientDisconnected(Client):
     print(f"{Client} disconnected !")
@@ -72,5 +71,3 @@ for x in range(-7, 7):
 
 while True:
     Easy.process_net_events()
-
-
