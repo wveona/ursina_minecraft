@@ -7,4 +7,4 @@
 
 assets: https://devilsworkshop.itch.io/essential-low-poly-isometric-3d-block-and-hex-pack
 
-필요한 라이브러리: ursina, perlin_noise
+필요한 라이브러리: ursina, perlin_noise, ursinanetworking
