@@ -20,6 +20,14 @@ BLOCKS = [
     "bedrock"
 ]
 
+block_texture = {
+    "grass" : load_texture("assets/groundEarthCheckered.png"),
+    "dirt" : load_texture("assets/groundMud.png"),
+    "stone" : load_texture("assets/Stone01.png"),
+    "brick" : load_texture("assets/wallBrick01.png"),
+    "bedrock" : load_texture("assets/stone07.png"),
+}
+
 Blocks = {}
 Players = {}
 PlayersTargetPos = {}
@@ -111,6 +119,15 @@ def input(key):
     
     Client.send_message("MyPosition", tuple(Ply.position + (0, 1, 0)))
 
+hand_block = Entity( 
+    parent = camera,
+    model = "assets/block.obj",
+    scale = .2, 
+    texture = block_texture.get(SELECTED_BLOCK),
+    position = (.35, -.25, .5), 
+    rotation = (-15, -30, -5) 
+)
+
 def update():
 
     if Ply.position[1] < -5:
@@ -122,6 +139,8 @@ def update():
         except Exception as e: print(e)
     
     Easy.process_net_events()
+
+    hand_block.texture = block_texture.get(SELECTED_BLOCK)
 
 sky = Sky(texture = "sky_sunset") 
 
