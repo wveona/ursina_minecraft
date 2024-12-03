@@ -27,3 +27,10 @@ class Bedrock(Block):
         self.texture = "assets/stone07.png"
         self.breakable = False
         
+block_texture = {
+    "grass" : load_texture("assets/groundEarthCheckered.png"),
+    "dirt" : load_texture("assets/groundMud.png"),
+    "stone" : load_texture("assets/Stone01.png"),
+    "brick" : load_texture("assets/wallBrick01.png"),
+    "bedrock" : load_texture("assets/stone07.png"),
+}

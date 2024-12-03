@@ -111,6 +111,15 @@ def input(key):
     
     Client.send_message("MyPosition", tuple(Ply.position + (0, 1, 0)))
 
+hand_block = Entity( 
+    parent = camera,
+    model = "assets/block.obj",
+    scale = .2, 
+    texture = block_texture.get(SELECTED_BLOCK),
+    position = (.35, -.25, .5), 
+    rotation = (-15, -30, -5) 
+)
+
 def update():
 
     if Ply.position[1] < -5:
@@ -122,6 +131,8 @@ def update():
         except Exception as e: print(e)
     
     Easy.process_net_events()
+
+    hand_block.texture = block_texture.get(SELECTED_BLOCK)
 
 sky = Sky(texture = "sky_sunset") 
 
